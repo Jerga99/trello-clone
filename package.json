@@ -1,5 +1,8 @@
 {
   "name": "trello-clone",
+  "engines": {
+    "node": "8.9.4"
+  },
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.2.2",
