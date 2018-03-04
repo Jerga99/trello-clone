@@ -5,7 +5,7 @@
       <card v-for="card in list.cards" :key="card.id" :card="card" :list="list"></card>
     </draggable>
 
-    <a v-if="!editing" v-on:click="startEditing">Add Card</a>
+    <a v-if="!editing" v-on:click="startEditing" class="btn btn-success">Add Card</a>
     <textarea v-if="editing" ref="message" v-model="message" class="form-control input-text"></textarea>
     <button v-if="editing" v-on:click="createCard" class="btn btn-success">Add</button>
     <a v-if="editing" v-on:click="editing = false">Cancel</a>
@@ -79,7 +79,10 @@ import card from './card';
 
 <style scoped>
   .list-title {
-    font-size: 17px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #303030;
   }
 
   .input-text {

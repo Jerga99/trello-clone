@@ -74,13 +74,15 @@ export default {
 
 <style scoped>
 .list {
-    background-color: #E2E4E6;
+    background-color: #ffba36;
     border-radius: 3px;
     display: inline-block;
     width: 270px;
     vertical-align: top;
     padding: 10px;
     margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 9px 10px 20px rgba(0,0,0,0.3);
   }
 
 .dragArea {
@@ -90,6 +92,7 @@ export default {
 .board {
   white-space: nowrap;
   overflow-x: auto;
+  margin-bottom: 20px;
 }
 
 </style>
