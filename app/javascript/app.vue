@@ -1,12 +1,14 @@
 <template>
   <draggable v-model="lists" :options="{group: 'lists'}" class="board dragArea" @end="listMoved">
     <list v-for="(list, index) in lists" :list="list"></list>
+
     <div class="list">
       <a v-if="!editing" v-on:click="startEditing">Add a List</a>
       <textarea v-if="editing" ref="message" v-model="message" class="form-control input-text"></textarea>
       <button v-if="editing" v-on:click="createList" class="btn btn-success">Add</button>
       <a v-if="editing" v-on:click="editing = false">Cancel</a>
     </div>
+
   </draggable>
 </template>
 
@@ -25,9 +27,14 @@ export default {
   },
 
   computed: {
-    lists() {
-      return this.$store.state.lists;
-    }
+    lists: {
+      get() {
+        return this.$store.state.lists
+      },
+      set(value) {
+        this.$store.state.lists = value
+      },
+    },
   },
   methods: {
     listMoved: function(event) {
