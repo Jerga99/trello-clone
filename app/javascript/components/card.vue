@@ -68,14 +68,19 @@ export default {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-}
+  /* Modal Content */
+  .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%;
+  }
+
+  .card {
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+  }
+
   .card-block {
     background-color: white;
   }
