@@ -7,7 +7,7 @@
 
     <a v-if="!editing" v-on:click="startEditing">Add Card</a>
     <textarea v-if="editing" ref="message" v-model="message" class="form-control input-text"></textarea>
-    <button v-if="editing" v-on:click="submitMessage" class="btn btn-success">Add</button>
+    <button v-if="editing" v-on:click="createCard" class="btn btn-success">Add</button>
     <a v-if="editing" v-on:click="editing = false">Cancel</a>
 
   </div>
@@ -32,7 +32,7 @@ import card from './card';
         this.editing = true;
         this.$nextTick(() => { this.$refs.message.focus() })
       },
-      submitMessage: function() {
+      createCard: function() {
         var data =  new FormData
         data.append("card[list_id]", this.list.id);
         data.append("card[name]", this.message);
@@ -44,8 +44,6 @@ import card from './card';
           dataType: "json",
           beforeSend: function() { return true },
           success: (data) => {
-            const index = window.store.lists.findIndex(item => item.id == this.list.id)
-            window.store.lists[index].cards.push(data);
             this.message = ""
             this.$nextTick(() => { this.$refs.message.focus() })
           }
@@ -57,14 +55,14 @@ import card from './card';
 
         const element = evt.element;
 
-        const list_index = window.store.lists.findIndex((list) => {
+        const list_index = this.$store.state.lists.findIndex((list) => {
           return list.cards.find((card) => {
             return card.id === element.id;
           });
         });
 
         var data = new FormData
-        data.append("card[list_id]", window.store.lists[list_index].id)
+        data.append("card[list_id]", this.$store.state.lists[list_index].id)
         data.append("card[position]", evt.newIndex + 1)
 
         Rails.ajax({
