@@ -58,3 +58,4 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'acts_as_list'
 gem 'webpacker', '~> 3.2'
+gem "redis", "~> 3.3.3"
