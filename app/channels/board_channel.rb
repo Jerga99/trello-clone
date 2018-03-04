@@ -4,6 +4,6 @@ class BoardChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    stop.all_streams
+     stop_all_streams
   end
 end
